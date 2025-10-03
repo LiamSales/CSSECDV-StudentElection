@@ -1,2 +1,6 @@
 # CSSECDV-StudentElection
-Liam Miguel Sales
+
+Liam Sales
+Dwight Astero
+Kristian Kintanar
+
