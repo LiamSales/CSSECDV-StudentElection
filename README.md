@@ -1,6 +1,6 @@
 # CSSECDV-StudentElection
 
-Liam Sales
-Dwight Astero
-Kristian Kintanar
+## Liam Sales
+## Dwight Astero
+## Kristian Kintanar
 
