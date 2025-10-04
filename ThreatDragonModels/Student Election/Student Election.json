@@ -1,9 +1,9 @@
 {
   "version": "2.5.0",
   "summary": {
-    "title": "Student Election",
+    "title": "",
     "owner": "",
-    "description": "",
+    "description": "Web-based student election system. Front-end: HTML5/CSS3/JS/Handlebars. Backend: Node.js REST API + Web3.js. Persistent store: MongoDB (hashed passwords with PBKDF2; private keys encrypted with PKCS#5). Public blockchain: Ethereum (transactions recorded on-chain).",
     "id": 0
   },
   "detail": {
@@ -128,15 +128,15 @@
             "data": {
               "type": "tm.Store",
               "name": "Student Voter\n Information",
-              "description": "",
+              "description": "MongoDB database of student voters. Stores hashed passwords (PBKDF2withHmacSHA256), encrypted private keys (PKCS#5), generated public keys, voter metadata and voting status.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isALog": false,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isSigned": false,
-              "storesCredentials": false,
+              "storesCredentials": true,
               "storesInventory": false,
               "threats": []
             }
@@ -152,7 +152,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Client\nWeb Browser"
+                "text": "Voter\nWeb Browser"
               },
               "body": {
                 "stroke": "#333333",
@@ -248,8 +248,125 @@
             "id": "5478f63e-c838-4947-84d5-00c60aebc067",
             "data": {
               "type": "tm.Actor",
-              "name": "Client\nWeb Browser",
-              "description": "",
+              "name": "Voter\nWeb Browser",
+              "description": "Front-end client used by voters (HTML5/CSS3/JS/Handlebars). Used to authenticate and cast votes. Initiates HTTPS requests to NodeJS REST API and interacts with the UI for re-authentication when casting votes.",
+              "isTrustBoundary": false,
+              "outOfScope": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "providesAuthentication": false,
+              "threats": []
+            }
+          },
+          {
+            "position": {
+              "x": 2740,
+              "y": 110
+            },
+            "size": {
+              "width": 112.5,
+              "height": 60
+            },
+            "attrs": {
+              "text": {
+                "text": "Election Admin\nWeb Browser"
+              },
+              "body": {
+                "stroke": "#333333",
+                "strokeWidth": 1.5,
+                "strokeDasharray": null
+              }
+            },
+            "visible": true,
+            "shape": "actor",
+            "zIndex": 2,
+            "ports": {
+              "groups": {
+                "top": {
+                  "position": "top",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "right": {
+                  "position": "right",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "bottom": {
+                  "position": "bottom",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                },
+                "left": {
+                  "position": "left",
+                  "attrs": {
+                    "circle": {
+                      "r": 4,
+                      "magnet": true,
+                      "stroke": "#5F95FF",
+                      "strokeWidth": 1,
+                      "fill": "#fff",
+                      "style": {
+                        "visibility": "hidden"
+                      }
+                    }
+                  }
+                }
+              },
+              "items": [
+                {
+                  "group": "top",
+                  "id": "9b69e538-a973-4105-8e0c-83430c8fbd07"
+                },
+                {
+                  "group": "right",
+                  "id": "9bc1c0b4-6956-4652-a308-97555f5ecd2c"
+                },
+                {
+                  "group": "bottom",
+                  "id": "989f319c-5713-4d1e-aefa-cfe0e4d7e790"
+                },
+                {
+                  "group": "left",
+                  "id": "912dc0bb-c214-4404-a25e-fb3102e250b4"
+                }
+              ]
+            },
+            "id": "a1f5c4b6-1f2e-4caa-8a77-5b2b8d6b7e11",
+            "data": {
+              "type": "tm.Actor",
+              "name": "Election Admin\nWeb Browser",
+              "description": "Front-end client used by election administrators to create accounts, batch-upload voters/candidates, and export credentials. Uses HTTPS to communicate with NodeJS backend.",
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
@@ -269,7 +386,7 @@
             },
             "attrs": {
               "text": {
-                "text": "NodeJS Server\nwith Restful API"
+                "text": "NodeJS Server\nwith RESTful API"
               },
               "body": {
                 "stroke": "#333333",
@@ -365,13 +482,13 @@
             "id": "6de041b6-667e-4766-a23f-12d81432623c",
             "data": {
               "type": "tm.Actor",
-              "name": "NodeJS Server\nwith Restful API",
-              "description": "",
+              "name": "NodeJS Server\nwith RESTful API",
+              "description": "Node.js backend implementing RESTful endpoints for authentication, voter & candidate registration, credential generation (password-generator.js), key generation (jsrsasign.js), hashing (PBKDF2withHmacSHA256), key encryption (PKCS#5), and Web3.js calls to an Ethereum node to send transactions.",
               "isTrustBoundary": false,
               "outOfScope": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
-              "providesAuthentication": false,
+              "providesAuthentication": true,
               "threats": []
             }
           },
@@ -386,7 +503,7 @@
             },
             "attrs": {
               "text": {
-                "text": "Etherum"
+                "text": "Ethereum\nNode / Network"
               },
               "body": {
                 "stroke": "#333333",
@@ -482,8 +599,8 @@
             "id": "7f58b343-7998-4b82-adc5-b44ec2f238c8",
             "data": {
               "type": "tm.Process",
-              "name": "Etherum",
-              "description": "",
+              "name": "Ethereum Node / Network",
+              "description": "Public Ethereum network or a hosted Ethereum node. Node accepts JSON-RPC calls (via Web3.js) to submit transactions which are then validated and added to a block. Transaction data recorded publicly on-chain.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -515,8 +632,8 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Student\nVoter\nEtherreum \nAccount",
-              "description": "",
+              "name": "Student\nVoter\nEthereum Account",
+              "description": "Voter account / keypair used to sign ballots and create signed transactions. Private key is encrypted in the DB and decrypted by server on re-authentication.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
@@ -524,11 +641,11 @@
               "isBidirectional": false,
               "isEncrypted": false,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "local private key store / retrieved via server",
               "threats": []
             },
             "labels": [
-              "Student\nVoter\nEtherreum \nAccount"
+              "Student\nVoter\nEthereum Account"
             ],
             "id": "245953e5-4e33-4a10-bfb8-ed6f53adf458",
             "source": {
@@ -566,16 +683,16 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Run Credentials",
-              "description": "",
+              "name": "Run Credentials (DB <-> Server)",
+              "description": "Server reads/writes voter records, credentials, hashed passwords, encrypted private keys. Use MongoDB over TLS recommended.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
-              "isBidirectional": false,
-              "isEncrypted": false,
+              "isBidirectional": true,
+              "isEncrypted": true,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "MongoDB over TLS",
               "threats": []
             },
             "labels": [
@@ -617,16 +734,16 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Authenticated Send Token",
-              "description": "",
+              "name": "Voter Authentication (Login)",
+              "description": "Voter authenticates to server using credentials provided by election admin. Re-authentication required before casting a vote.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isBidirectional": false,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "HTTPS (TLS)",
               "threats": []
             },
             "labels": [
@@ -668,16 +785,16 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Wait\nand get\nresponse",
-              "description": "",
+              "name": "Wait and get response (Blockchain status)",
+              "description": "Server polls/listens for transaction confirmation from Ethereum node and returns status to client.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isBidirectional": false,
-              "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
+              "isEncrypted": true,
+              "isPublicNetwork": true,
+              "protocol": "Ethereum JSON-RPC (node responses) / HTTPS",
               "threats": []
             },
             "labels": [
@@ -719,16 +836,16 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Call and\nExecute\nSmart\nContract",
-              "description": "",
+              "name": "Call and Execute Smart Contract (send tx)",
+              "description": "Server (via Web3.js) requests transaction submission to the Ethereum node. Transactions are public on-chain once mined.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isBidirectional": false,
               "isEncrypted": false,
-              "isPublicNetwork": false,
-              "protocol": "",
+              "isPublicNetwork": true,
+              "protocol": "Ethereum JSON-RPC (sendRawTransaction)",
               "threats": []
             },
             "labels": [
@@ -770,16 +887,16 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Request Ballot Cast Vote",
-              "description": "",
+              "name": "Vote Casting Request",
+              "description": "Client submits filled ballot; server requires re-authentication, decrypts private key, signs/hashes ballot and prepares signed payload to forward to election module and blockchain.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isBidirectional": false,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "HTTPS (TLS)",
               "threats": []
             },
             "labels": [
@@ -821,16 +938,16 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Authenticate Send Token",
-              "description": "",
+              "name": "Authenticate Send Token (Server -> Client)",
+              "description": "Server returns authentication tokens / status after login or vote submission (e.g., transaction hash).",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isBidirectional": false,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "HTTPS (TLS)",
               "threats": []
             },
             "labels": [
@@ -872,16 +989,16 @@
             "connector": "smooth",
             "data": {
               "type": "tm.Flow",
-              "name": "Response",
-              "description": "",
+              "name": "Response (Server -> Client)",
+              "description": "General server responses such as success/failure or transaction status updates.",
               "outOfScope": false,
               "isTrustBoundary": false,
               "reasonOutOfScope": "",
               "hasOpenThreats": false,
               "isBidirectional": false,
-              "isEncrypted": false,
+              "isEncrypted": true,
               "isPublicNetwork": false,
-              "protocol": "",
+              "protocol": "HTTPS (TLS)",
               "threats": []
             },
             "labels": [
@@ -900,6 +1017,108 @@
               {
                 "x": 3110,
                 "y": 190
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 320,
+            "height": 100,
+            "zIndex": 14,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Voter Registration (Admin -> Server -> DB)",
+              "description": "Administrator creates single or batch voter accounts (.CSV) via the admin UI. Server generates passwords (password-generator.js), generates key pairs (jsrsasign.js), hashes passwords (PBKDF2), encrypts private keys (PKCS#5) and stores credentials in MongoDB. Admin can export credentials.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS (TLS) + MongoDB over TLS",
+              "threats": []
+            },
+            "labels": [
+              "Voter Registration"
+            ],
+            "id": "c9b1f1f2-6aa7-4e05-8b30-fd2f9c5a8d55",
+            "source": {
+              "cell": "a1f5c4b6-1f2e-4caa-8a77-5b2b8d6b7e11",
+              "port": "9bc1c0b4-6956-4652-a308-97555f5ecd2c"
+            },
+            "target": {
+              "cell": "6de041b6-667e-4766-a23f-12d81432623c",
+              "port": "3b69e538-a973-4105-8e0c-83430c8fbd07"
+            },
+            "vertices": [
+              {
+                "x": 3000,
+                "y": -20
+              }
+            ]
+          },
+          {
+            "shape": "flow",
+            "attrs": {
+              "line": {
+                "stroke": "#333333",
+                "targetMarker": {
+                  "name": "block"
+                },
+                "sourceMarker": {
+                  "name": ""
+                },
+                "strokeDasharray": null
+              }
+            },
+            "width": 320,
+            "height": 100,
+            "zIndex": 15,
+            "connector": "smooth",
+            "data": {
+              "type": "tm.Flow",
+              "name": "Candidate Registration (Admin -> Server -> DB)",
+              "description": "Administrator registers single candidate or batch uploads candidates via .CSV. Server stores candidate info in MongoDB.",
+              "outOfScope": false,
+              "isTrustBoundary": false,
+              "reasonOutOfScope": "",
+              "hasOpenThreats": false,
+              "isBidirectional": false,
+              "isEncrypted": true,
+              "isPublicNetwork": false,
+              "protocol": "HTTPS (TLS) + MongoDB over TLS",
+              "threats": []
+            },
+            "labels": [
+              "Candidate Registration"
+            ],
+            "id": "d4b2c3d4-8b77-4f5a-a1bb-22e9c7f0a999",
+            "source": {
+              "cell": "a1f5c4b6-1f2e-4caa-8a77-5b2b8d6b7e11",
+              "port": "9bc1c0b4-6956-4652-a308-97555f5ecd2c"
+            },
+            "target": {
+              "cell": "6de041b6-667e-4766-a23f-12d81432623c",
+              "port": "3b69e538-a973-4105-8e0c-83430c8fbd07"
+            },
+            "vertices": [
+              {
+                "x": 3000,
+                "y": 20
               }
             ]
           }
